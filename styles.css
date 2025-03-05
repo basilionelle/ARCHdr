@@ -1,0 +1,184 @@
+:root {
+    --forest-green: #41644A;    /* Primary dark green */
+    --deep-green: #0D4715;     /* Darkest green for emphasis */
+    --soft-beige: #F1F0E9;     /* Light background */
+    --sage-green: #9DC08B;     /* Light green for secondary elements */
+    --medium-green: #3A7D44;   /* Medium green for interactive elements */
+}
+
+/* Base Styles */
+body {
+    background-color: var(--soft-beige);
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-mode .bg-white {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .text-deep-green {
+    color: var(--teal-green);
+}
+
+/* Custom Utility Classes */
+.bg-soft-beige { background-color: var(--soft-beige); }
+.bg-light-green { background-color: var(--sage-green); }
+.bg-medium-green { background-color: var(--medium-green); }
+.bg-deep-green { background-color: var(--deep-green); }
+.bg-forest-green { background-color: var(--forest-green); }
+
+.text-medium-green { color: var(--medium-green); }
+.text-deep-green { color: var(--deep-green); }
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-10px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Interactive Elements */
+.hover-effect {
+    transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styles */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Status Indicators */
+.status-available {
+    background-color: var(--medium-green);
+    color: white;
+}
+
+.status-full {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-waitlisted {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        transition: left 0.3s ease;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Focus States */
+:focus {
+    outline: 2px solid var(--teal-green);
+    outline-offset: 2px;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Form Elements */
+input, select, textarea {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--medium-green);
+    box-shadow: 0 0 0 2px rgba(93, 185, 150, 0.2);
+}
+
+/* Button Styles */
+.btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--medium-green);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--deep-green);
+}
+
+/* Progress Bar Animation */
+.progress-bar {
+    transition: width 0.5s ease;
+}
+
+/* Tooltip Styles */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+[data-tooltip]:hover:before {
+    opacity: 1;
+}

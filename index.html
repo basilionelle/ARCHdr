@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archer Hunter - University Enlistment System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-soft-beige font-montserrat">
+    <div class="flex h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="w-64 bg-white shadow-lg">
+            <div class="p-4">
+                <h1 class="text-forest-green text-xl font-bold">Archer Hunter</h1>
+            </div>
+            <nav class="mt-4">
+                <div class="student-nav">
+                    <div class="px-4 py-2 text-sm font-semibold text-gray-500">STUDENT MENU</div>
+                    <a href="#" class="flex items-center px-4 py-3 text-deep-green hover:bg-sage-green">
+                        <span>📚 Enlistment</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-deep-green hover:bg-sage-green">
+                        <span>🎯 My Schedule</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-deep-green hover:bg-sage-green">
+                        <span>❗ Issues</span>
+                    </a>
+                </div>
+                <div class="admin-nav hidden">
+                    <div class="px-4 py-2 text-sm font-semibold text-gray-500">ADMIN MENU</div>
+                    <a href="#" class="flex items-center px-4 py-3 text-deep-green hover:bg-sage-green">
+                        <span>📊 Dashboard</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-deep-green hover:bg-sage-green">
+                        <span>📝 Reports</span>
+                    </a>
+                    <a href="#" class="flex items-center px-4 py-3 text-deep-green hover:bg-sage-green">
+                        <span>👥 Students</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- Top Navigation Bar -->
+            <header class="bg-white shadow-sm">
+                <div class="flex items-center justify-between px-6 py-4">
+                    <h2 class="text-2xl font-bold text-deep-green">Dashboard</h2>
+                    <div class="flex items-center space-x-4">
+                        <button id="theme-toggle" class="p-2 rounded-full hover:bg-sage-green">
+                            🌙
+                        </button>
+                        <div class="relative">
+                            <button class="flex items-center space-x-2">
+                                <img src="https://ui-avatars.com/api/?name=Student&background=5DB996&color=fff" 
+                                     alt="Profile" 
+                                     class="w-8 h-8 rounded-full">
+                                <span class="text-deep-green">Student Name</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="p-6">
+                <!-- Enlistment Progress Tracker -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                    <h3 class="text-xl font-bold text-deep-green mb-4">Enlistment Progress</h3>
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <div class="relative pt-1">
+                                <div class="flex mb-2 items-center justify-between">
+                                    <div>
+                                        <span class="text-xs font-medium text-forest-green uppercase tracking-wider bg-sage-green px-3 py-2 rounded">
+                                            Course Selection
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-medium text-forest-green uppercase tracking-wider bg-sage-green px-3 py-2 rounded">
+                                            Conflict Check
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-medium text-gray-400 uppercase tracking-wider bg-gray-100 px-3 py-2 rounded">
+                                            Confirmation
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-light-green">
+                                    <div class="w-2/3 shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-medium-green"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Selection Table -->
+                <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-deep-green">Available Courses</h3>
+                        <div class="flex space-x-2">
+                            <input type="text" 
+                                   placeholder="Search courses..." 
+                                   class="px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-green">
+                            <button class="px-4 py-2 bg-medium-green text-white rounded-lg hover:bg-deep-green">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="bg-light-green">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-deep-green uppercase">Course Code</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-deep-green uppercase">Title</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-deep-green uppercase">Schedule</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-deep-green uppercase">Slots</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-deep-green uppercase">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-deep-green uppercase">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white">
+                                <!-- Sample course rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Issue Reporting Panel -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <h3 class="text-xl font-bold text-deep-green mb-4">Report an Issue</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Category</label>
+                            <select class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-teal-green focus:border-teal-green rounded-md">
+                                <option>Prerequisite Issue</option>
+                                <option>Slot Error</option>
+                                <option>Technical Problem</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Description</label>
+                            <textarea class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-teal-green focus:border-teal-green"></textarea>
+                        </div>
+                        <button class="w-full px-4 py-2 bg-medium-green text-white rounded-lg hover:bg-deep-green">
+                            Submit Issue
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
